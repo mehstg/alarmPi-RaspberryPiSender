@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 
 import RPi.GPIO as GPIO
-import time, logging, sys, requests, json
+import time, logging, sys, requests, json, ssl, certifi
 
 #API URL
 api='https://wansbeck.paulbraham.com/api/v1.0/'
@@ -52,7 +52,7 @@ def pin27Event(channel):
 def pushMessage(event):
 	data = {"state" : event}
 	data_json = json.dumps(data)
-	response = requests.post(api, data=data_json)
+	response = requests.post(api, data=data_json, verify=False)
 	return response.text
 
 
