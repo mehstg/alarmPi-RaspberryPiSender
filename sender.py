@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 import time, logging, sys, requests, json, ssl, certifi
 
 #API URL
-api='https://wansbeck.paulbraham.com/api/v1.0/'
+api='http://192.168.1.101:5000/api/v1.0/setState'
 
 #Set up logging
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -50,10 +50,9 @@ def pin27Event(channel):
         logging.info("Alarm Disarmed") 
 
 def pushMessage(event):
-	data = {"state" : event}
-	data_json = json.dumps(data)
-	response = requests.post(api, data=data_json, verify=False)
-	return response.text
+	response = requests.post(api, json = {'state': 'arm'})
+	logging.info(response.text)
+	return True
 
 
 #Invoke main function
