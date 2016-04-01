@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 
 import RPi.GPIO as GPIO
-import time, logging, sys, requests
+import time, logging, sys, requests, json
 
 #API URL
 api='https://wansbeck.paulbraham.com/api/v1.0/'
