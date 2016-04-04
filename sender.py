@@ -50,7 +50,7 @@ def pin27Event(channel):
         logging.info("Alarm Disarmed") 
 
 def pushMessage(event):
-	response = requests.post(api, json = {'state': 'arm'})
+	response = requests.post(api, json = {'state': event})
 	logging.info(response.text)
 	return True
 
